@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://liyaoheng.github.io">
-  <title>first | leeyh-blog</title>
+  <title>Gson反序列化时Int默认转换为Double的解决方法 | leeyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="测试推送一篇文章 文章内容，部署成功">
-<meta name="keywords" content="test">
+  <meta name="description" content="项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。 截取源码部分关键代码 1234567case STRING: return in.nextString();//数值类型全部转换为了Double类型case NUMBER: return in.nextDoub">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="first">
-<meta property="og:url" content="https://liyaoheng.github.io/2018/03/05/first/index.html">
+<meta property="og:title" content="Gson反序列化时Int默认转换为Double的解决方法">
+<meta property="og:url" content="https://liyaoheng.github.io/2018/03/22/Gson反序列化时Int默认转换为Double的解决方法/index.html">
 <meta property="og:site_name" content="leeyh-blog">
-<meta property="og:description" content="测试推送一篇文章 文章内容，部署成功">
+<meta property="og:description" content="项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。 截取源码部分关键代码 1234567case STRING: return in.nextString();//数值类型全部转换为了Double类型case NUMBER: return in.nextDoub">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-07T03:24:46.264Z">
+<meta property="og:updated_time" content="2018-03-22T07:48:35.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="first">
-<meta name="twitter:description" content="测试推送一篇文章 文章内容，部署成功">
+<meta name="twitter:title" content="Gson反序列化时Int默认转换为Double的解决方法">
+<meta name="twitter:description" content="项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。 截取源码部分关键代码 1234567case STRING: return in.nextString();//数值类型全部转换为了Double类型case NUMBER: return in.nextDoub">
   
     <link rel="alternative" href="/atom.xml" title="leeyh-blog" type="application/atom+xml">
   
@@ -165,28 +165,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-first" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Gson反序列化时Int默认转换为Double的解决方法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      first
+      Gson反序列化时Int默认转换为Double的解决方法
     </h1>
   
 
         
-        <a href="/2018/03/05/first/" class="archive-article-date">
-  	<time datetime="2018-03-05T09:07:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
+        <a href="/2018/03/22/Gson反序列化时Int默认转换为Double的解决方法/" class="archive-article-date">
+  	<time datetime="2018-03-22T07:00:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>测试推送一篇文章</p>
-<p>文章内容，部署成功</p>
+        <p>项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。</p>
+<p><strong>截取源码部分关键代码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> STRING:</span><br><span class="line"> <span class="keyword">return</span> in.nextString();</span><br><span class="line"><span class="comment">//数值类型全部转换为了Double类型</span></span><br><span class="line"><span class="keyword">case</span> NUMBER:</span><br><span class="line"> <span class="keyword">return</span> in.nextDouble();</span><br><span class="line"><span class="keyword">case</span> BOOLEAN:</span><br><span class="line"> <span class="keyword">return</span> in.nextBoolean();</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>解决思路：</strong></p>
+<blockquote>
+<ol>
+<li>如果反序列化的类型确定，<strong>直接指定Entity类型</strong>。</li>
+<li>注册类型适配器，<strong>重写map的反序列化</strong>（修改源码中case NUMBER的逻辑），<a href="http://www.lidetao.com/java-gson-json2map-int2double.html/comment-page-1#comment-2368" target="_blank" rel="noopener">这篇文章给出了重写的代码</a></li>
+</ol>
+</blockquote>
+<hr>
+<p><strong>解决方法实现：</strong></p>
+<blockquote>
+<p>推荐阅读<a href="http://www.lidetao.com/java-gson-json2map-int2double.html/comment-page-1#comment-2368" target="_blank" rel="noopener">这篇文章</a></p>
+</blockquote>
+<p><strong>注：jackson中没有这个问题。。。</strong></p>
+<hr>
+<blockquote>
+<p> <span id="codeHead">GsonUtils</span>代码做个备份。摘抄于上面推荐阅读的文章。</p>
+</blockquote>
+<pre><code class="Java"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GsonUtil</span> </span>{
+
+    <span class="comment">/**</span>
+<span class="comment">     * 序列化时，null列不处理问题，添加serializeNulls()。</span>
+<span class="comment">     */</span>
+    <span class="keyword">private</span> <span class="keyword">static</span> Gson gson = <span class="keyword">new</span> GsonBuilder().serializeNulls().create();
+
+    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">toJson</span><span class="params">(Object data)</span> </span>{
+        <span class="keyword">return</span> gson.toJson(data);
+    }
+
+    <span class="comment">/**</span>
+<span class="comment">     * 反序列化时</span>
+<span class="comment">     * 1、int 转变为 double 问题，重写map适配器，判断number逻辑</span>
+<span class="comment">     * <span class="doctag">@return</span></span>
+<span class="comment">     */</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">fromJson</span><span class="params">(String json, TypeToken&lt;T&gt; typeToken)</span></span>{
+        Gson gson = <span class="keyword">new</span> GsonBuilder().serializeNulls().registerTypeAdapter(<span class="keyword">new</span> TypeToken&lt;Map&lt;String,Object&gt;&gt;(){}.getType()
+        ,<span class="keyword">new</span> MapTypeAdapter()).create();
+        <span class="keyword">return</span> gson.fromJson(json,typeToken.getType());
+    }
+
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MapTypeAdapter</span> <span class="keyword">extends</span> <span class="title">TypeAdapter</span>&lt;<span class="title">Object</span>&gt; </span>{
+        <span class="meta">@Override</span>
+        <span class="function"><span class="keyword">public</span> Object <span class="title">read</span><span class="params">(JsonReader in)</span> <span class="keyword">throws</span> IOException </span>{
+            JsonToken token = in.peek();
+            <span class="keyword">switch</span> (token) {
+                <span class="keyword">case</span> BEGIN_ARRAY:
+                    List&lt;Object&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();
+                    in.beginArray();
+                    <span class="keyword">while</span> (in.hasNext()) {
+                        list.add(read(in));
+                    }
+                    in.endArray();
+                    <span class="keyword">return</span> list;
+
+                <span class="keyword">case</span> BEGIN_OBJECT:
+                    Map&lt;String, Object&gt; map = <span class="keyword">new</span> LinkedTreeMap&lt;&gt;();
+                    in.beginObject();
+                    <span class="keyword">while</span> (in.hasNext()) {
+                        map.put(in.nextName(), read(in));
+                    }
+                    in.endObject();
+                    <span class="keyword">return</span> map;
+
+                <span class="keyword">case</span> STRING:
+                    <span class="keyword">return</span> in.nextString();
+
+                <span class="keyword">case</span> NUMBER:
+                    <span class="comment">/**</span>
+<span class="comment">                     * 改写数字的处理逻辑，将数字值分为整型与浮点型。</span>
+<span class="comment">                     */</span>
+                    <span class="keyword">double</span> dbNum = in.nextDouble();
+
+                    <span class="comment">// 数字超过long的最大值，返回浮点类型</span>
+                    <span class="keyword">if</span> (dbNum &gt; Long.MAX_VALUE) {
+                        <span class="keyword">return</span> dbNum;
+                    }
+
+                    <span class="comment">// 判断数字是否为整数值</span>
+                    <span class="keyword">long</span> lngNum = (<span class="keyword">long</span>) dbNum;
+                    <span class="keyword">if</span> (dbNum == lngNum) {
+                        <span class="keyword">return</span> lngNum;
+                    } <span class="keyword">else</span> {
+                        <span class="keyword">return</span> dbNum;
+                    }
+
+                <span class="keyword">case</span> BOOLEAN:
+                    <span class="keyword">return</span> in.nextBoolean();
+
+                <span class="keyword">case</span> NULL:
+                    in.nextNull();
+                    <span class="keyword">return</span> <span class="keyword">null</span>;
+
+                <span class="keyword">default</span>:
+                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();
+            }
+        }
+
+        <span class="meta">@Override</span>
+        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(JsonWriter out, Object value)</span> <span class="keyword">throws</span> IOException </span>{
+            <span class="comment">// 序列化无需实现</span>
+        }
+
+    }
+}
+</code></pre>
+<p> <strong>END <a href="#codeHead">再看一遍代码</a></strong></p>
 
       
 
@@ -221,7 +328,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">test</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -277,7 +384,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://liyaoheng.github.io/2018/03/05/first/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://liyaoheng.github.io/2018/03/22/Gson反序列化时Int默认转换为Double的解决方法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -291,18 +398,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/03/05/second/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          second
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2018/03/20/红黑树/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">红黑树</div>
       <i class="icon-circle-right"></i>
     </a>
   
