@@ -222,6 +222,7 @@
 <span class="comment">     * 1、int 转变为 double 问题，重写map适配器，判断number逻辑</span>
 <span class="comment">     * <span class="doctag">@return</span></span>
 <span class="comment">     */</span>
+    <span class="comment">//调用：List&lt;Map&lt;String,Object&gt;&gt; jsonList = GsonUtil.fromJson(json,new TypeToken&lt;List&lt;Map&lt;String,Object&gt;&gt;&gt;(){});</span>
     <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">fromJson</span><span class="params">(String json, TypeToken&lt;T&gt; typeToken)</span></span>{
         Gson gson = <span class="keyword">new</span> GsonBuilder().serializeNulls().registerTypeAdapter(<span class="keyword">new</span> TypeToken&lt;Map&lt;String,Object&gt;&gt;(){}.getType()
         ,<span class="keyword">new</span> MapTypeAdapter()).create();

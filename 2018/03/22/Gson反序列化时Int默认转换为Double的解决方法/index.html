@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="leeyh-blog">
 <meta property="og:description" content="项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。 截取源码部分关键代码 1234567case STRING: return in.nextString();//数值类型全部转换为了Double类型case NUMBER: return in.nextDoub">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-22T07:48:35.993Z">
+<meta property="og:updated_time" content="2018-03-22T08:06:45.583Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gson反序列化时Int默认转换为Double的解决方法">
 <meta name="twitter:description" content="项目中使用Gson进行json的转换，碰到的问题：当json窜反序列化的时候，出现了Int默认转换为Double的问题，原因是Gson的源码中对number数据默认都处理为了double。 截取源码部分关键代码 1234567case STRING: return in.nextString();//数值类型全部转换为了Double类型case NUMBER: return in.nextDoub">
@@ -222,6 +222,7 @@
 <span class="comment">     * 1、int 转变为 double 问题，重写map适配器，判断number逻辑</span>
 <span class="comment">     * <span class="doctag">@return</span></span>
 <span class="comment">     */</span>
+    <span class="comment">//调用：List&lt;Map&lt;String,Object&gt;&gt; jsonList = GsonUtil.fromJson(json,new TypeToken&lt;List&lt;Map&lt;String,Object&gt;&gt;&gt;(){});</span>
     <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">fromJson</span><span class="params">(String json, TypeToken&lt;T&gt; typeToken)</span></span>{
         Gson gson = <span class="keyword">new</span> GsonBuilder().serializeNulls().registerTypeAdapter(<span class="keyword">new</span> TypeToken&lt;Map&lt;String,Object&gt;&gt;(){}.getType()
         ,<span class="keyword">new</span> MapTypeAdapter()).create();
