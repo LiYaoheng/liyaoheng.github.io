@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://liyaoheng.github.io">
   <title>CollaborativeFilteringRecommendation【协同过滤推荐】算法学习 | leeyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="占坑，毕业设计用到了，有时间总结一下参考资料之一">
+  <meta name="description" content="占坑，毕业设计用到了，有时间总结一下协同过滤（Collaborative Filtering）技术，是推荐系统中应用最为广泛的技术之一，它基于一组兴趣相同的用户进行推荐。协同过滤基于这样的假设：为用户找到他真正感兴趣的内容的好方法是，首先找他与他兴趣相似的用户，然后将这些用户感兴趣的内容推荐给此用户。这个基本思想是不是和现在颇为流行的“口碑传播(word-of-mouth)”有点儿类似？其实这个非">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CollaborativeFilteringRecommendation【协同过滤推荐】算法学习">
 <meta property="og:url" content="https://liyaoheng.github.io/2018/06/29/CollaborativeFilteringRecommendation【协同过滤推荐】算法学习/index.html">
 <meta property="og:site_name" content="leeyh-blog">
-<meta property="og:description" content="占坑，毕业设计用到了，有时间总结一下参考资料之一">
+<meta property="og:description" content="占坑，毕业设计用到了，有时间总结一下协同过滤（Collaborative Filtering）技术，是推荐系统中应用最为广泛的技术之一，它基于一组兴趣相同的用户进行推荐。协同过滤基于这样的假设：为用户找到他真正感兴趣的内容的好方法是，首先找他与他兴趣相似的用户，然后将这些用户感兴趣的内容推荐给此用户。这个基本思想是不是和现在颇为流行的“口碑传播(word-of-mouth)”有点儿类似？其实这个非">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-29T03:58:23.803Z">
+<meta property="og:updated_time" content="2018-09-06T07:00:21.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CollaborativeFilteringRecommendation【协同过滤推荐】算法学习">
-<meta name="twitter:description" content="占坑，毕业设计用到了，有时间总结一下参考资料之一">
+<meta name="twitter:description" content="占坑，毕业设计用到了，有时间总结一下协同过滤（Collaborative Filtering）技术，是推荐系统中应用最为广泛的技术之一，它基于一组兴趣相同的用户进行推荐。协同过滤基于这样的假设：为用户找到他真正感兴趣的内容的好方法是，首先找他与他兴趣相似的用户，然后将这些用户感兴趣的内容推荐给此用户。这个基本思想是不是和现在颇为流行的“口碑传播(word-of-mouth)”有点儿类似？其实这个非">
   
     <link rel="alternative" href="/atom.xml" title="leeyh-blog" type="application/atom+xml">
   
@@ -185,7 +185,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="占坑，毕业设计用到了，有时间总结一下"><a href="#占坑，毕业设计用到了，有时间总结一下" class="headerlink" title="占坑，毕业设计用到了，有时间总结一下"></a>占坑，毕业设计用到了，有时间总结一下</h3><p><a href="https://www.zhihu.com/question/19971859" target="_blank" rel="noopener">参考资料之一</a></p>
+        <h3 id="占坑，毕业设计用到了，有时间总结一下"><a href="#占坑，毕业设计用到了，有时间总结一下" class="headerlink" title="占坑，毕业设计用到了，有时间总结一下"></a>占坑，毕业设计用到了，有时间总结一下</h3><p>协同过滤（Collaborative Filtering）技术，是推荐系统中应用最为广泛的技术之一，它基于一组兴趣相同的用户进行推荐。协同过滤基于这样的假设：为用户找到他真正感兴趣的内容的好方法是，首先找他与他兴趣相似的用户，然后将这些用户感兴趣的内容推荐给此用户。这个基本思想是不是和现在颇为流行的“口碑传播(word-of-mouth)”有点儿类似？其实这个非常直观，相信大家都有体会，在现实生活里，对自己最有效的信息，往往是来自于朋友们的推荐。</p>
+<p>协同过滤技术可以分为三类：</p>
+<ul>
+<li>基于用户（User-based）的协同过滤</li>
+<li>基于项目（Item-based）的协同过滤</li>
+<li>基于模型（Model- based）的协同过滤。</li>
+</ul>
+<p><a href="http://bluewhale.cc/2016-03-11/collaborative-filtering.html" target="_blank" rel="noopener">前两种方式的详细介绍</a></p>
+<p><a href="https://www.zhihu.com/question/19971859" target="_blank" rel="noopener">知乎回答</a></p>
 
       
 
@@ -462,6 +470,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">test</a>
               </li>
              
@@ -474,11 +486,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">jms</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">otter</a>
               </li>
             
             <div class="clearfix"></div>
