@@ -165,6 +165,171 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Validated和-Valid的比较区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/12/Validated和-Valid的比较区别/">@Validated和@Valid的比较区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/12/Validated和-Valid的比较区别/" class="archive-article-date">
+  	<time datetime="2018-10-12T11:10:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>介绍@Validated和@Valid注解的不同验证方式：</p>
+<p>推荐<a href="https://blog.csdn.net/qq_27680317/article/details/79970590" target="_blank" rel="noopener">CSDN的这篇博客</a></p>
+<p>总结：</p>
+<ol>
+<li>分组</li>
+</ol>
+<p>@Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。</p>
+<ol>
+<li>注解地方</li>
+</ol>
+<p>@Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上</p>
+<p>@Valid：可以用在方法、构造函数、方法参数和成员属性（字段）上</p>
+<p>两者是否能用于成员属性（字段）上直接影响能否提供嵌套验证的功能。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/12/Validated和-Valid的比较区别/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Controller-ExceptionHandle全局处理controller的Exception" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/12/Controller-ExceptionHandle全局处理controller的Exception/">@Controller+@ExceptionHandle全局处理controller的Exception</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/12/Controller-ExceptionHandle全局处理controller的Exception/" class="archive-article-date">
+  	<time datetime="2018-10-12T11:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>使用@Controller + @ExceptionHandle进行controller层的全局异常处理：</p>
+<p>推荐<a href="https://blog.csdn.net/kinginblue/article/details/70186586" target="_blank" rel="noopener">csdn这篇博客</a>，写的很不错。</p>
+<p>对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。</p>
+<p>如此一来，我们的 Controller 层就不得不进行 try-catch Service 层的异常，否则会返回一些不友好的错误信息到客户端。但是，Controller 层每个方法体都写一些模板化的 try-catch 的代码，很难看也难维护，特别是还需要对 Service 层的不同异常进行不同处理的时候。<br>使用 @ControllerAdvice + @ExceptionHandler 进行全局的 Controller 层异常处理，只要设计得当，就再也不用在 Controller 层进行 try-catch 了！而且，@Validated 校验器注解的异常，也可以一起处理，无需手动判断绑定校验结果。</p>
+<p>优点：将 Controller 层的异常和数据校验的异常进行统一处理，减少模板代码，减少编码量，提升扩展性和可维护性。<br>缺点：只能处理 Controller 层未捕获（往外抛）的异常，对于 Interceptor（拦截器）层的异常，Spring 框架层的异常，就无能为力了。</p>
+<p>被 <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">@ExceptionHandler</a> 注解的方法还可以声明很多参数，详见<a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">文档</a>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/12/Controller-ExceptionHandle全局处理controller的Exception/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-API网关-api-gateway-的了解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -785,172 +950,6 @@
 
 
   
-    <article id="post-docker学习【一】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/docker学习【一】/">docker学习【一】</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/29/docker学习【一】/" class="archive-article-date">
-  	<time datetime="2018-06-29T03:47:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>整理一些在学习docker过程中的资料和自己的理解。</p>
-<p><a href="https://mongodb-documentation.readthedocs.io/en/latest/" target="_blank" rel="noopener">官方文档</a></p>
-<p><a href="https://docs.docker-cn.com/" target="_blank" rel="noopener">Docker文档</a></p>
-<p>推荐阮一峰的<a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">Docker入门教程</a></p>
-<p>纯洁的微笑的<a href="https://www.cnblogs.com/ityouknow/category/1173004.html" target="_blank" rel="noopener">Docker系列文章</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/29/docker学习【一】/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/jQuery选择器/">jQuery选择器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/29/jQuery选择器/" class="archive-article-date">
-  	<time datetime="2018-06-29T02:59:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="【转载】jQuery获取元素的方法"><a href="#【转载】jQuery获取元素的方法" class="headerlink" title="【转载】jQuery获取元素的方法"></a>【转载】<a href="http://www.cnblogs.com/js0618/p/6385364.html" target="_blank" rel="noopener">jQuery获取元素的方法</a></h1><blockquote>
-<p>$(“#id”)      //id选择器<br>$(“.class”)    //类选择器<br>$(“label”)    //标签选择器</p>
-</blockquote>
-<blockquote>
-<p>$(“:input”)    //条件选择器，获取所有input元素<br>$(“:checked”)    //条件选择器，获取选中的元素</p>
-</blockquote>
-<hr>
-<blockquote>
-<ul>
-<li>通过选择器可以遍历指定元素</li>
-<li>通过选择器可以获取当前元素的父级，同级，子级元素</li>
-</ul>
-</blockquote>
-<hr>
-<h3 id="其他详细的元素获取方式参见上面转载的博客"><a href="#其他详细的元素获取方式参见上面转载的博客" class="headerlink" title="其他详细的元素获取方式参见上面转载的博客"></a>其他详细的元素获取方式参见上面转载的博客</h3><p>[END]</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/29/jQuery选择器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1052,11 +1051,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
