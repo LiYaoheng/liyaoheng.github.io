@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://liyaoheng.github.io">
   <title>@Validated和@Valid的比较区别 | leeyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="介绍@Validated和@Valid注解的不同验证方式： 推荐CSDN的这篇博客 总结：  分组  @Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
+  <meta name="description" content="介绍@Validated和@Valid注解的不同验证方式: 推荐CSDN的这篇博客 总结:  分组  @Validated:提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated:可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
 <meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="@Validated和@Valid的比较区别">
 <meta property="og:url" content="https://liyaoheng.github.io/2018/10/12/Validated和-Valid的比较区别/index.html">
 <meta property="og:site_name" content="leeyh-blog">
-<meta property="og:description" content="介绍@Validated和@Valid注解的不同验证方式： 推荐CSDN的这篇博客 总结：  分组  @Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
+<meta property="og:description" content="介绍@Validated和@Valid注解的不同验证方式: 推荐CSDN的这篇博客 总结:  分组  @Validated:提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated:可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T11:13:39.495Z">
+<meta property="og:updated_time" content="2018-10-15T13:16:02.859Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="@Validated和@Valid的比较区别">
-<meta name="twitter:description" content="介绍@Validated和@Valid注解的不同验证方式： 推荐CSDN的这篇博客 总结：  分组  @Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
+<meta name="twitter:description" content="介绍@Validated和@Valid注解的不同验证方式: 推荐CSDN的这篇博客 总结:  分组  @Validated:提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。  注解地方  @Validated:可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上 @Valid">
   
     <link rel="alternative" href="/atom.xml" title="leeyh-blog" type="application/atom+xml">
   
@@ -185,18 +185,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>介绍@Validated和@Valid注解的不同验证方式：</p>
+        <p>介绍@Validated和@Valid注解的不同验证方式:</p>
 <p>推荐<a href="https://blog.csdn.net/qq_27680317/article/details/79970590" target="_blank" rel="noopener">CSDN的这篇博客</a></p>
-<p>总结：</p>
+<p>总结:</p>
 <ol>
 <li>分组</li>
 </ol>
-<p>@Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。</p>
+<p>@Validated:提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。</p>
 <ol>
 <li>注解地方</li>
 </ol>
-<p>@Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上</p>
-<p>@Valid：可以用在方法、构造函数、方法参数和成员属性（字段）上</p>
+<p>@Validated:可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上</p>
+<p>@Valid:可以用在方法、构造函数、方法参数和成员属性（字段）上</p>
 <p>两者是否能用于成员属性（字段）上直接影响能否提供嵌套验证的功能。</p>
 
       
@@ -301,6 +301,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/10/15/Sql语句查询慢问题排查和优化/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Sql语句查询慢问题排查和优化
+        
+      </div>
+    </a>
   
   
     <a href="/2018/10/12/Controller-ExceptionHandle全局处理controller的Exception/" id="article-nav-older" class="article-nav-link-wrap">
@@ -457,6 +466,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -465,7 +478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,15 +502,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jms</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,6 +511,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">otter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jms</a>
               </li>
             
             <div class="clearfix"></div>

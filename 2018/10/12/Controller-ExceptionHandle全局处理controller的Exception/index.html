@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://liyaoheng.github.io">
   <title>@Controller+@ExceptionHandle全局处理controller的Exception | leeyh-blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理： 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
+  <meta name="description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理: 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
 <meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="@Controller+@ExceptionHandle全局处理controller的Exception">
 <meta property="og:url" content="https://liyaoheng.github.io/2018/10/12/Controller-ExceptionHandle全局处理controller的Exception/index.html">
 <meta property="og:site_name" content="leeyh-blog">
-<meta property="og:description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理： 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
+<meta property="og:description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理: 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-12T11:17:27.027Z">
+<meta property="og:updated_time" content="2018-10-15T13:15:06.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="@Controller+@ExceptionHandle全局处理controller的Exception">
-<meta name="twitter:description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理： 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
+<meta name="twitter:description" content="使用@Controller + @ExceptionHandle进行controller层的全局异常处理: 推荐csdn这篇博客，写的很不错。 对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。 如此一来，我们的 Controller 层就不得不进行 try-c">
   
     <link rel="alternative" href="/atom.xml" title="leeyh-blog" type="application/atom+xml">
   
@@ -185,11 +185,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用@Controller + @ExceptionHandle进行controller层的全局异常处理：</p>
+        <p>使用@Controller + @ExceptionHandle进行controller层的全局异常处理:</p>
 <p>推荐<a href="https://blog.csdn.net/kinginblue/article/details/70186586" target="_blank" rel="noopener">csdn这篇博客</a>，写的很不错。</p>
 <p>对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。</p>
 <p>如此一来，我们的 Controller 层就不得不进行 try-catch Service 层的异常，否则会返回一些不友好的错误信息到客户端。但是，Controller 层每个方法体都写一些模板化的 try-catch 的代码，很难看也难维护，特别是还需要对 Service 层的不同异常进行不同处理的时候。<br>使用 @ControllerAdvice + @ExceptionHandler 进行全局的 Controller 层异常处理，只要设计得当，就再也不用在 Controller 层进行 try-catch 了！而且，@Validated 校验器注解的异常，也可以一起处理，无需手动判断绑定校验结果。</p>
-<p>优点：将 Controller 层的异常和数据校验的异常进行统一处理，减少模板代码，减少编码量，提升扩展性和可维护性。<br>缺点：只能处理 Controller 层未捕获（往外抛）的异常，对于 Interceptor（拦截器）层的异常，Spring 框架层的异常，就无能为力了。</p>
+<p>优点:将 Controller 层的异常和数据校验的异常进行统一处理，减少模板代码，减少编码量，提升扩展性和可维护性。<br>缺点:只能处理 Controller 层未捕获（往外抛）的异常，对于 Interceptor（拦截器）层的异常，Spring 框架层的异常，就无能为力了。</p>
 <p>被 <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">@ExceptionHandler</a> 注解的方法还可以声明很多参数，详见<a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">文档</a>。</p>
 
       
@@ -459,6 +459,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -467,7 +471,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,15 +495,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jms</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -508,6 +504,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">otter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jms</a>
               </li>
             
             <div class="clearfix"></div>

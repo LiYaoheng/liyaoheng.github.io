@@ -165,6 +165,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Sql语句查询慢问题排查和优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/15/Sql语句查询慢问题排查和优化/">Sql语句查询慢问题排查和优化</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/15/Sql语句查询慢问题排查和优化/" class="archive-article-date">
+  	<time datetime="2018-10-15T13:05:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sql语句查询慢原因排查和优化方法，及原理总结</p>
+<blockquote>
+<p>1.原因排查</p>
+</blockquote>
+<p>命令:explain sql </p>
+<p>查询分析结果的说明：<a href="http://www.cnblogs.com/xuanzhi201111/p/4175635.html" target="_blank" rel="noopener">可以看这篇文章</a></p>
+<p>命令:</p>
+<p>1.set profiling = 1;    //开启操作记录分析<br>2.show profiles;    //查看最近所有的执行sql统计，主要是操作耗费的时长<br>3.show profile [params…] [for query id]    //查询id对应的sql的详细过程耗时记录</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/yunhua_lee/article/details/8573621" target="_blank" rel="noopener">实战:sending data 导致查询很慢的问题分析和解决</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/15/Sql语句查询慢问题排查和优化/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Validated和-Valid的比较区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -185,18 +269,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>介绍@Validated和@Valid注解的不同验证方式：</p>
+        <p>介绍@Validated和@Valid注解的不同验证方式:</p>
 <p>推荐<a href="https://blog.csdn.net/qq_27680317/article/details/79970590" target="_blank" rel="noopener">CSDN的这篇博客</a></p>
-<p>总结：</p>
+<p>总结:</p>
 <ol>
 <li>分组</li>
 </ol>
-<p>@Validated：提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。</p>
+<p>@Validated:提供了一个分组功能，可以在入参验证时，根据不同的分组采用不同的验证机制，这个网上也有资料，不详述。@Valid：作为标准JSR-303规范，还没有吸收分组的功能。</p>
 <ol>
 <li>注解地方</li>
 </ol>
-<p>@Validated：可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上</p>
-<p>@Valid：可以用在方法、构造函数、方法参数和成员属性（字段）上</p>
+<p>@Validated:可以用在类型、方法和方法参数上。但是不能用在成员属性（字段）上</p>
+<p>@Valid:可以用在方法、构造函数、方法参数和成员属性（字段）上</p>
 <p>两者是否能用于成员属性（字段）上直接影响能否提供嵌套验证的功能。</p>
 
       
@@ -271,11 +355,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>使用@Controller + @ExceptionHandle进行controller层的全局异常处理：</p>
+        <p>使用@Controller + @ExceptionHandle进行controller层的全局异常处理:</p>
 <p>推荐<a href="https://blog.csdn.net/kinginblue/article/details/70186586" target="_blank" rel="noopener">csdn这篇博客</a>，写的很不错。</p>
 <p>对于与数据库相关的 Spring MVC 项目，我们通常会把 事务 配置在 Service层，当数据库操作失败时让 Service 层抛出运行时异常，Spring 事物管理器就会进行回滚。</p>
 <p>如此一来，我们的 Controller 层就不得不进行 try-catch Service 层的异常，否则会返回一些不友好的错误信息到客户端。但是，Controller 层每个方法体都写一些模板化的 try-catch 的代码，很难看也难维护，特别是还需要对 Service 层的不同异常进行不同处理的时候。<br>使用 @ControllerAdvice + @ExceptionHandler 进行全局的 Controller 层异常处理，只要设计得当，就再也不用在 Controller 层进行 try-catch 了！而且，@Validated 校验器注解的异常，也可以一起处理，无需手动判断绑定校验结果。</p>
-<p>优点：将 Controller 层的异常和数据校验的异常进行统一处理，减少模板代码，减少编码量，提升扩展性和可维护性。<br>缺点：只能处理 Controller 层未捕获（往外抛）的异常，对于 Interceptor（拦截器）层的异常，Spring 框架层的异常，就无能为力了。</p>
+<p>优点:将 Controller 层的异常和数据校验的异常进行统一处理，减少模板代码，减少编码量，提升扩展性和可维护性。<br>缺点:只能处理 Controller 层未捕获（往外抛）的异常，对于 Interceptor（拦截器）层的异常，Spring 框架层的异常，就无能为力了。</p>
 <p>被 <a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">@ExceptionHandler</a> 注解的方法还可以声明很多参数，详见<a href="http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/bind/annotation/ExceptionHandler.html" target="_blank" rel="noopener">文档</a>。</p>
 
       
@@ -873,86 +957,9 @@
 
 
   
-    <article id="post-nginx学习【一】" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/nginx学习【一】/">Nginx学习【一】</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/29/nginx学习【一】/" class="archive-article-date">
-  	<time datetime="2018-06-29T03:47:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>【转载】<a href="https://juejin.im/post/5b8f963ce51d450e425e81b1" target="_blank" rel="noopener">全面了解Nginx能做什么</a></p>
-<h3 id="Nginx能做什么"><a href="#Nginx能做什么" class="headerlink" title="Nginx能做什么"></a>Nginx能做什么</h3><p>1.反向代理<br>2.负载均衡<br>3.HTTP服务器(包含动静分离)<br>4.正向代理</p>
-<p>以上是Nginx在不依赖第三方模块能处理的事情，详细的介绍的配置方式在<a href="https://juejin.im/post/5b8f963ce51d450e425e81b1" target="_blank" rel="noopener">原文</a>中有全面的介绍。</p>
-<p>占坑，总结一下Nginx的理解，重要的是配置文件的参数说明总结一下。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/29/nginx学习【一】/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1051,6 +1058,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
@@ -1059,7 +1070,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1083,15 +1094,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jms</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">mongodb</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,6 +1103,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">otter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jms</a>
               </li>
             
             <div class="clearfix"></div>
